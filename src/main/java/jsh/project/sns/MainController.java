@@ -7,7 +7,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class MainController {
 
 	//application.properties 외에 추가적으로 사용할 properties를 추가해 줄 수 있다.
-	private static final String PROPERTIES = "spring.config.location=classpath:/google.yml";
+	private static final String PROPERTIES = "spring.config.location=classpath:/application.yml, classpath:/google.yml";
 
 	public static void main(String[] args) {
 		//SpringApplication.run(MainController.class, args);
