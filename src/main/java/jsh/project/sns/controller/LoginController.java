@@ -10,7 +10,7 @@ public class LoginController{
 
     @GetMapping(value="/login")
     public String getMethodName() {
-        return "login Test";
+        return "login";
     
     }
 
