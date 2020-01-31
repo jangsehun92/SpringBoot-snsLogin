@@ -11,7 +11,6 @@ public class LoginController{
     @GetMapping(value="/login")
     public String getMethodName() {
         return "login";
-    
     }
 
 }

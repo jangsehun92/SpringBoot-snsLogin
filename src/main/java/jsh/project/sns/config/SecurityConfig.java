@@ -10,6 +10,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
 	public void configure(WebSecurity web) throws Exception {
+		//리소스 폴더 내에 css&lib 폴더를 두고 사용할 경우 추가해 주면 된다.
 		web.ignoring().antMatchers("/css/**", "/script/**", "image/**", "/fonts/**", "lib/**");
     }
     
@@ -17,6 +18,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/admin/**").hasRole("ADMIN")
-			.antMatchers("/**").permitAll();
+			.antMatchers("/","/login").permitAll()
+			.anyRequest().authenticated()
+                .and().logout().logoutSuccessUrl("/").permitAll()
+                .and().headers().frameOptions().sameOrigin()
+                .and().csrf().disable();
 	}
 }
