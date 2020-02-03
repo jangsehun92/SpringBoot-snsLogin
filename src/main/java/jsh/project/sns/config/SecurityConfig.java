@@ -1,5 +1,6 @@
 package jsh.project.sns.config;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -10,7 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    
+	
+	/*
+	Spring 버젼이 2.x대로 넘어오면서 oauth 관련 설정들이 조금씩 바뀌어 전체적으로 다시 바꿔야할듯
+	*/
     @Override
 	public void configure(WebSecurity web) throws Exception {
 		//리소스 폴더 내에 css&lib 폴더를 두고 사용할 경우 추가해 주면 된다.
@@ -27,4 +31,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().headers().frameOptions().sameOrigin()
                 .and().csrf().disable();
 	}
+
 }
