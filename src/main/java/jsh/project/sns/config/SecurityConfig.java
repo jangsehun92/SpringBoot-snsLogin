@@ -1,17 +1,14 @@
 package jsh.project.sns.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-//@EnableOAuth2Sso
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	
 	/*
 	Spring 버젼이 2.x대로 넘어오면서 oauth 관련 설정들이 조금씩 바뀌어 전체적으로 다시 바꿔야할듯
 	*/
@@ -27,9 +24,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers("/","/login").permitAll()
 			.anyRequest().authenticated()
-                .and().logout().logoutSuccessUrl("/").permitAll()
-                .and().headers().frameOptions().sameOrigin()
-                .and().csrf().disable();
+				.and()
+			.logout().logoutSuccessUrl("/").permitAll()
+				.and()
+			.headers().frameOptions().sameOrigin()
+				.and()
+			.csrf().disable();
 	}
 
 }
